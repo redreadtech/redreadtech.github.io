@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <title>Tech Discussion | RedRead</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" type="text/css" href="../CSS/main.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        
+    </head>
+    
+    <script>    
+        function isScrolledIntoView(elem) {
+            
+            var bottomBoundY = Math.max(0,((jQuery(window).height()-jQuery(elem).outerHeight()) / 2) 
+                          + jQuery(window).scrollTop()) * 1.7;
+
+            var elementTop = jQuery(elem).offset().top;
+
+            return elementTop <= bottomBoundY;
+        }
+        
+        jQuery(document).ready(function() {            
+            jQuery(".article-button").each(function(index, element) {
+                if (isScrolledIntoView(element)) {
+                    //alert("true")
+                   jQuery(element).animate({
+                       opacity: 1.0,
+                       borderRadius: 40,
+                   }, 500);
+                };
+            });
+            
+            jQuery(window).on("scroll resize", function() {
+                jQuery(".article-button").each(function(index, element) {
+                    if (isScrolledIntoView(element)) {
+                        //alert("true")
+                       jQuery(element).animate({
+                           opacity: 1.0,
+                           borderRadius: 40,
+                       }, 500);
+                    };
+                });
+            });
+            
+            
+            $(".article-button").click(function() {
+                var $articleNumber = $(this).attr("data-article-number");
+                $("body").find("#article-modal").load("../ARTICLES/" + $(this).attr("data-article-number") + ".html").css("display", "block");
+            });
+        }); 
+        
+    </script>
+
+    <body class="w3-panel w3-light-gray w3-animate-opacity">
+
+        <div class="w3-white w3- w3-round-large">
+            
+            <!-- HEADER -->
+            <div class="w3-round-large w3-red w3-panel w3-card">
+                <center><h1>RedRead</h1></center>
+            </div>
+            
+
+            <!-- SUB -->
+            <center>
+                <h2 style="padding:0px 0px 16px 0px"><i>Engaging articles about the tech world</i></h2>
+            </center>
+        
+        </div>
+
+        <!-- GRID -->
+        <center>
+            <h3>Content</h3>
+            <hr class="w3-border-red" style="margin:auto;width:20%">            
+        </center>
+        
+
+        <div class="w3-panel w3-row">  
+
+            <div class="w3-col s12 m4 l3"> 
+                <div class="w3-button w3-red w3-round-large w3-card w3-margin-right w3-panel w3-padding-16 w3-hover-sepia article-button" data-article-number="article_1">
+                    <h4>Net Neutrality</h4>
+                    <img src="RESOURCES/1/FCC.jpg" class="w3-image w3-round-xlarge">
+                </div>
+            </div>
+            
+
+        </div>
+
+        <div id="article-modal" class="w3-modal">
+            
+        </div>
+        
+        <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+    </body>
+
+</html>
