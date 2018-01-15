@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:300');
+@import url('https://fonts.googleapis.com/css?family=Muli:600');
+
+html {
+    overflow-y:scroll;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+h2 {
+    font-size: 25px;
+}
+
+h3 {
+    font-size: 20px;
+}
+
+h4 {
+    font-size: 15px;
+}
+
+h1, h2, h3{
+    font-family: 'Roboto Slab', serif;
+}
+
+p, h4 {
+    font-family: 'Muli', sans-serif;
+}
+
+.article-button {
+    opacity: 0;
+}
