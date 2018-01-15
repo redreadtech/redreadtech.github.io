@@ -1,9 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Slab:300');
 @import url('https://fonts.googleapis.com/css?family=Muli:600');
 
-html {
-    overflow-y:scroll;
-}
 
 h1 {
     font-size: 40px;
