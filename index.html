@@ -8,7 +8,6 @@
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" type="text/css" href="../CSS/main.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        
     </head>
     
     <script>    
@@ -20,6 +19,22 @@
             var elementTop = jQuery(elem).offset().top;
 
             return elementTop <= bottomBoundY;
+        }
+        
+        function darkToggle() {
+            // Get the checkbox
+            var checkBox = document.getElementById("darkMode");
+
+              // If the checkbox is checked, display the output text
+            if (checkBox.checked == true){
+                $(".maincolor").css("background-color","#16161D")
+                $(".switchColor").css("color","#FFFFFF")
+                $(".sub").css("background-color","#27272E")
+            } else {
+                $(".maincolor").css("background-color","#f5f5f5")
+                $(".switchColor").css("color","#000000")
+                $(".sub").css("background-color","#ffffff")
+            }
         }
         
         jQuery(document).ready(function() {            
@@ -54,9 +69,9 @@
         
     </script>
 
-    <body class="w3-panel w3-light-gray w3-animate-opacity">
+    <body class="w3-panel maincolor w3-animate-opacity">
 
-        <div class="w3-white w3- w3-round-large">
+        <div class="sub w3-round-large">
             
             <!-- HEADER -->
             <div class="w3-round-large w3-red w3-panel w3-card">
@@ -66,13 +81,13 @@
 
             <!-- SUB -->
             <center>
-                <h2 style="padding:0px 0px 16px 0px"><i>Engaging articles about the tech world</i></h2>
+                <h2 style="padding:0px 0px 16px 0px" class="switchColor"><i>Engaging articles about the tech world</i></h2>
             </center>
         
         </div>
 
         <!-- GRID -->
-        <center>
+        <center class="switchColor">
             <h3>Content</h3>
             <hr class="w3-border-red" style="margin:auto;width:20%">            
         </center>
@@ -87,14 +102,19 @@
                 </div>
             </div>
             
-
         </div>
 
-        <div id="article-modal" class="w3-modal">
-            
+        <div id="article-modal" class="w3-modal">            
         </div>
         
-        <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+        <div class="footer switchColor maincolor w3-padding">
+            <span class="darklabel">Dark Theme:</span>
+            <label class="switch">
+                <input type="checkbox" id="darkMode" onclick="darkToggle()">
+                <span class="slider round"></span>
+            </label>
+        </div>
+        
     </body>
 
 </html>
