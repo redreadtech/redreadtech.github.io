@@ -1,6 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Slab:300');
 @import url('https://fonts.googleapis.com/css?family=Muli:600');
 
+.w3-image{
+    height:80%;
+    width:100%
+}
+
+.w3-button {
+    height: 280px;
+}
+
 h1 {
     font-size: 40px;
 }
