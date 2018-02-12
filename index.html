@@ -13,6 +13,23 @@
     </head>
     
     <script>
+        //dark theme toggle
+        function darkToggle() {
+            // Get the checkbox
+            var checkBox = document.getElementById("darkMode");
+
+              // If the checkbox is checked, display the output text
+            if (checkBox.checked == true){
+                $(".maincolor").css("background-color","#16161D")
+                $(".switchColor").css("color","#FFFFFF")
+                $(".sub").css("background-color","#27272E")
+            } else {
+                $(".maincolor").css("background-color","#f5f5f5")
+                $(".switchColor").css("color","#000000")
+                $(".sub").css("background-color","#ffffff")
+            }
+        }            
+        
         var config = {
             apiKey: "AIzaSyA8AAfxLA929j0ybiFMlmowIB1aeHsZxSQ",
             authDomain: "redread-tech.firebaseapp.com",
@@ -85,23 +102,6 @@
                 });
             });
             
-        //dark theme toggle
-        function darkToggle() {
-            // Get the checkbox
-            var checkBox = document.getElementById("darkMode");
-
-              // If the checkbox is checked, display the output text
-            if (checkBox.checked == true){
-                $(".maincolor").css("background-color","#16161D")
-                $(".switchColor").css("color","#FFFFFF")
-                $(".sub").css("background-color","#27272E")
-            } else {
-                $(".maincolor").css("background-color","#f5f5f5")
-                $(".switchColor").css("color","#000000")
-                $(".sub").css("background-color","#ffffff")
-            }
-        }            
-            
             $(".article-button").click(function() {
                 var $articleNumber = $(this).attr("data-article-number");
                 $("body").find("#article-modal").load("../ARTICLES/" + $(this).attr("data-article-number") + ".html").css("display", "block");
@@ -136,7 +136,8 @@
         </center>
         
 
-        <div class="w3-panel w3-row">
+        <div class="w3-panel w3-row">  
+            
             <div class="w3-col s12 m4 l3"> 
                 <div class="w3-button w3-red w3-round-large w3-card w3-margin-right w3-panel w3-padding-16 w3-hover-sepia article-button" data-article-number="article_2">
                     <h4>Meltdown and Spectre</h4>
@@ -149,7 +150,8 @@
                     <h4>Net Neutrality</h4>
                     <img src="RESOURCES/1/FCC.jpg" class="w3-image w3-round-xlarge">
                 </div>
-            </div>            
+            </div>
+            
         </div>
 
         <div id="article-modal" class="w3-modal">            
