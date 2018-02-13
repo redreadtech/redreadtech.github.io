@@ -126,5 +126,8 @@ input:checked + .slider:before {
 }
 /*END OF DARK THEME CHECKBOX*/
 
-
+textarea {
+    resize: none;
+    height: 150px;
+}
 
