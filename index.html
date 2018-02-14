@@ -49,7 +49,20 @@
         // Note: this doesn't exist yet. But when we write to our Firebase using
         // this reference, it will create this object for us!
         var article = myFirebase.child("comments");
-
+        counter = myFirebase.child("counter");
+        counterValue = 0;
+        
+        function updateCounter(counterValue){
+            counterValue++;
+            console.log(counterValue);
+            counter.set(counterValue);   
+        }
+        
+        counter.once("value", function(datasnapshot){
+            counterValue = parseInt(datasnapshot.val());
+            updateCounter(counterValue);
+        });
+        
         function commentMade() {
             // Push our first recommendation to the end of the list and assign it a
             // unique ID automatically.
@@ -79,7 +92,9 @@
             return elementTop <= bottomBoundY;
         }
         
-        jQuery(document).ready(function() {            
+        //document ready
+        jQuery(document).ready(function() {             
+
             jQuery(".article-button").each(function(index, element) {
                 if (isScrolledIntoView(element)) {
                     //alert("true")
