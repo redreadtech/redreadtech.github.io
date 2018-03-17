@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:300');
+@import url('https://fonts.googleapis.com/css?family=Muli:600');
+
+pre {
+    white-space: pre-wrap;       /* Since CSS 2.1 */
+}
+
+.comment {
+    font-family: "Muli", sans-serif;
+}
+
+.name {
+    font-family: "Roboto Slab", serif;
+    font-size: 20px;
+}
+
+.visits {
+    font-size: 40px;
+    font-family: "Roboto Slab", serif;
+}
