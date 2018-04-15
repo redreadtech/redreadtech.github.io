@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <title>About | RedRead</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" href="/RESOURCES/RedRead.png">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" type="text/css" href="../CSS/main.css">
+        <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    </head>
+    
+    <script>        
+        //dark theme toggle
+        function darkToggle() {
+            // Get the checkbox
+            var checkBox = document.getElementById("darkMode");
+
+              // If the checkbox is checked, display the output text
+            if (checkBox.checked == true){
+                $(".maincolor").css("background-color","#16161D")
+                $(".switchColor").css("color","#FFFFFF")
+                $(".sub").css("background-color","#27272E")
+            } else {
+                $(".maincolor").css("background-color","#f5f5f5")
+                $(".switchColor").css("color","#000000")
+                $(".sub").css("background-color","#ffffff")
+            }
+        }
+
+        // Get a reference to the recommendations object of your Firebase.
+        // Note: this doesn't exist yet. But when we write to our Firebase using
+        // this reference, it will create this object for us!
+        
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+        
+        var darkMode = getParameterByName('darkMode');
+        
+        //document ready
+        jQuery(document).ready(function() {                     
+            if(darkMode == "true") {
+                $(".maincolor").css("background-color","#16161D")
+                $(".switchColor").css("color","#FFFFFF")
+                $(".sub").css("background-color","#27272E")
+            } 
+            
+            $("body").css({
+                "height":"101vh"
+            });
+        }); 
+        
+        history.pushState({}, '', '/newpage');
+        window.onpopstate = function(e) { // executed when using the back button for example
+            if(darkMode=="true"){
+                location.href="index.html?darkMode=true"   
+            } else {
+                location.href="index.html"
+            }
+        };
+        
+    </script>
+
+    <body class="w3-panel maincolor w3-animate-opacity">
+
+        <div id="sub" class="sub w3-round-large">
+            
+            <!-- HEADER -->
+            <div class="w3-round-large w3-red w3-panel w3-card">
+                <center><h1>RedRead</h1></center>
+            </div>
+            
+
+            <!-- SUB -->
+            <center>
+                <h2 style="padding:0px 0px 16px 0px" class="switchColor">
+                    <i>Engaging articles <strong>about</strong> the tech world</i>
+                    <p>This project was created as part of the Skills Section in The Duke of Edinburgh Award.</p><p>In creating it, I have learnt and developed the skill of website design and explored new areas of the topic including jQuery, DOM traversing and Firebase. I have also improved my knowledge of HTML and CSS, using features that I had never used before such as the FlexBox model.</p><p>I enjoyed it thoroughly and have increased my capabilities in presenting information in a meaningful way online. I believe this is a skill that will be useful in the future.</p>
+                </h2>
+            </center>
+        
+        </div>
+        
+        <center id="stickme">      
+            <hr class="w3-border-red" style="margin:auto;width:20%">
+            <div>
+                <img src="RESOURCES/RedRead.png" class="w3-margin w3-round-xxlarge" width="50px">
+            </div>  
+        </center>
+    </body>
+
+</html>

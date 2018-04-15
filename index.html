@@ -92,8 +92,26 @@
             return elementTop <= bottomBoundY;
         }
         
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+        
         //document ready
-        jQuery(document).ready(function() {             
+        jQuery(document).ready(function() {  
+            var darkMode = getParameterByName('darkMode');
+            
+            if(darkMode == "true") {
+                $(".maincolor").css("background-color","#16161D")
+                $(".switchColor").css("color","#FFFFFF")
+                $(".sub").css("background-color","#27272E")
+                $('#darkMode').prop('checked', true);
+            } 
 
             jQuery(".article-button").each(function(index, element) {
                 if (isScrolledIntoView(element)) {
@@ -120,6 +138,16 @@
             $(".article-button").click(function() {
                 var $articleNumber = $(this).attr("data-article-number");
                 $("body").find("#article-modal").load("../ARTICLES/" + $(this).attr("data-article-number") + ".html").css("display", "block");
+            });
+            
+            $("#about").click(function() {
+                darkMode = document.getElementById("darkMode").checked
+                
+                if(darkMode) {
+                    location.href="about.html?darkMode=true";
+                } else {
+                    location.href="about.html";
+                }
             });
         }); 
         
@@ -153,6 +181,13 @@
 
         <div class="w3-panel w3-row">
             <div class="w3-col s12 m4 l3"> 
+                <div class="w3-button w3-red w3-round-large w3-card w3-margin-right w3-panel w3-padding-16 w3-hover-sepia article-button" data-article-number="article_4">
+                    <h4>Social Media</h4>
+                    <img src="RESOURCES/4/Facebook-Like-Button-Dislike-Button-Facebook-Social-Network-Reactions-Facebook-Reactions-Ireland-UK-Facebook-Reactions-UK-update-610809.jpg" class="w3-image w3-round-xlarge">
+                </div>
+            </div>
+            
+            <div class="w3-col s12 m4 l3"> 
                 <div class="w3-button w3-red w3-round-large w3-card w3-margin-right w3-panel w3-padding-16 w3-hover-sepia article-button" data-article-number="article_3">
                     <h4>Website Builders</h4>
                     <img src="RESOURCES/3/dotcom.png" class="w3-image w3-round-xlarge">
@@ -178,6 +213,9 @@
         <div id="article-modal" class="w3-modal">            
         </div>
         
+        <div>
+            <p id="about">About RedRead</p>
+        </div>
         
         <form class="w3-container w3-round-xlarge w3-card-4 w3-red w3-text-white w3-margin">
             <h2 class="w3-center" id="#sendMessageTitle">Send a message!</h2>
